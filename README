@@ -23,6 +23,9 @@
     Commands are sent on individual lines, separated by \n.
     Commands take the form: <key>[=<value>]
 
+    (e.g. to assign "name" the value "hello", send "name=hello",
+     and to retrieve the value in "name", send "name".)
+
     Responses take on the form <indicator><value>
 
     <indicator> is one of the following:
