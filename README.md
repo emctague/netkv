@@ -6,7 +6,7 @@ A **simple**, **networked** key-value store based on GDBM.
 
 ## The basics
 
-Netkv maps string keys to string values. Launch the server like this>
+Netkv maps string keys to string values. Launch the server like this:
 
     netkv <file> <port>
 
