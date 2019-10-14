@@ -6,6 +6,8 @@
     A simple networked key-value store based on GDBM.
     By Ethan McTague
 
+    DEMO: https://asciinema.org/a/8OdgJ65i424Et8t3wjVf4Zijn
+
 ---------------------------------------------------------------------------
 
     Netkv maps string keys to string values.
