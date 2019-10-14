@@ -5,7 +5,7 @@
 #define NETKV_MAIN_H
 
 #include <pthread.h>
-#include "/usr/local/include/gdbm.h"
+#include <gdbm.h>
 
 
 /** Datum shorthand. */
@@ -58,10 +58,20 @@ void bind_exit_handler(db_state *state);
 
 
 /** Database assignment handler. */
-char *handle_assignment(session_state *state, const char *key, const char *value);
+char *handle_assignment(session_state *state, const char *key, char *value);
 
 /** Database retrieval handler. */
 char *handle_retrieval(session_state *state, const char *key);
+
+
+/** Generate a secure-random 32-bit salt. */
+char* make_salt();
+
+/** Generate a SHA512 hash for the given input. */
+char *hash(const char *input, const char *salt);
+
+/** Compare an existing hash to the hash of some text. */
+int hash_equals(const char *hash, const char *text);
 
 
 #endif //NETKV_MAIN_H

@@ -63,7 +63,8 @@
 
     ~password
 
-        Empty by default, may be set to a SHA512 hash for a password.
+        Empty by default, may be set to a password. The Password is stored
+        with a SHA512 hash, prefixed by a 32-character salt.
         Once set, new connections will require authentication using the
         correct password (not hashed.)
 

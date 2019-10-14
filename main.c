@@ -7,10 +7,9 @@
 #include <netinet/in.h>
 #include "main.h"
 
-
 int main(int argc, char **argv) {
-    int port;
     GDBM_FILE db;
+    int port;
 
     struct sockaddr_in cliaddr;
     socklen_t clilen;
@@ -53,3 +52,4 @@ int main(int argc, char **argv) {
 datum dtm(const char *text) {
     return (datum){ (void*)text, (int)strlen(text) + 1 };
 }
+

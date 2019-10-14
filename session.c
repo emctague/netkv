@@ -34,9 +34,9 @@ void handle_session(session_state *state) {
 }
 
 
-char *handle_assignment(session_state *state, const char *key, const char *value) {
+char *handle_assignment(session_state *state, const char *key, char *value) {
     if (!state->authorized) {
-        if (!strcmp(key, "~password")) {
+        if (!strcmp(key, "~password") && hash_equals(state->db_state->password, value)) {
             state->authorized = 1;
             return strdup("?Authorized");
         } else {
@@ -47,7 +47,11 @@ char *handle_assignment(session_state *state, const char *key, const char *value
         if (state->db_state->is_locked && key[0] == '~') return strdup("!Locked");
         else {
             if (!strcmp(key, "~password")) {
-                state->db_state->password = strdup(value);
+                char *salt = make_salt();
+                value = hash(value, salt);
+                free(salt);
+                free(state->db_state->password);
+                state->db_state->password = value;
             } else if (!strcmp(key, "~locked") && !strcmp(value, "yes")) {
                 state->db_state->is_locked = 1;
             }
